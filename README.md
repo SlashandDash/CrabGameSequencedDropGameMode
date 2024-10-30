@@ -1,6 +1,8 @@
 # CrabGameSequencedDropGameMode
 A BepInEx mod for Crab Game that adds the Sequenced Drop custom game mode.
 
+Depends on [CustomGameModes](https://github.com/lammas321/CrabGameCustomGameModes)
+
 - The blocks will drop in a sequence
 - You must survive for the entire sequence
 - Be respectful, no pushing >=(
