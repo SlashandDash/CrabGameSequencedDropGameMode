@@ -74,9 +74,11 @@ namespace SequencedDropGameMode
             public InstructionType instructionType = instructionType;
             public IInstructionData instructionData = instructionData;
         }
-        internal struct Sequence(string name, int height, int minPlayers, int maxPlayers, Instruction[] instructions)
+        internal struct Sequence(string name, string difficulty, string madeBy, int height, int minPlayers, int maxPlayers, Instruction[] instructions)
         {
             public string name = name;
+            public string difficulty = difficulty;
+            public string madeBy = madeBy;
             public int height = height;
             public int minPlayers = minPlayers;
             public int maxPlayers = maxPlayers;
@@ -141,6 +143,8 @@ namespace SequencedDropGameMode
                     continue;
 
                 string name = "Unnamed";
+                string difficulty = "?";
+                string madeBy = "?";
                 int height = 1;
                 int minPlayers = -1;
                 int maxPlayers = -1;
@@ -161,6 +165,16 @@ namespace SequencedDropGameMode
                         case "name":
                             {
                                 name = value;
+                                break;
+                            }
+                        case "difficulty":
+                            {
+                                difficulty = value;
+                                break;
+                            }
+                        case "madeby":
+                            {
+                                madeBy = value;
                                 break;
                             }
                         case "height":
@@ -257,7 +271,7 @@ namespace SequencedDropGameMode
                     }
                 }
 
-                sequences.Add(new(name, height, minPlayers, maxPlayers, [.. instructions]));
+                sequences.Add(new(name, difficulty, madeBy, height, minPlayers, maxPlayers, [.. instructions]));
             }
         }
 
@@ -367,7 +381,7 @@ namespace SequencedDropGameMode
                 if (testing)
                 {
                     if (testingSequence == -2)
-                        currentSequence = new("Test", 1, -1, -1, [
+                        currentSequence = new("Test", "Easy", "Lammas321", 1, -1, -1, [
                             new Instruction(InstructionType.Drop, new InstructionDataDrop(DropPosition.Pos0, 0.125f)),
                                 new Instruction(InstructionType.Wait, new InstructionDataWait(0.125f * 4f)),
                                 new Instruction(InstructionType.Drop, new InstructionDataDrop(DropPosition.Pos1, 0.25f)),
@@ -422,7 +436,18 @@ namespace SequencedDropGameMode
                     flippedY = random.Next(2) == 1;
                     rotated = random.Next(2) == 1;
                 }
-                ServerSend.SendChatMessage(1, $"Current Sequence: {currentSequence.name}");
+                //ServerSend.SendChatMessage(1, $"Current Sequence: {currentSequence.name}");
+                //ServerSend.SendChatMessage(1, $"Current Diificulty: {currentSequence.difficulty}");
+                //ServerSend.SendChatMessage(1, $"Made by: {currentSequence.madeBy}");
+
+                for (int i = 0; i < 6; i++)
+                {
+                    Utility.SendMessage("", Utility.MessageType.Styled, "");
+                }
+
+                Utility.SendMessage(currentSequence.name, Utility.MessageType.Styled, "Current Sequence");
+                Utility.SendMessage($"[{currentSequence.difficulty}]", Utility.MessageType.Styled, "Current Diificulty");
+                Utility.SendMessage(currentSequence.madeBy, Utility.MessageType.Styled, "Made by");
 
                 foreach (Instruction instruction in currentSequence.instructions)
                     switch (instruction.instructionType)
