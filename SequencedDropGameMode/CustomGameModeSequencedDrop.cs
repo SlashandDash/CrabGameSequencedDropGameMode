@@ -437,7 +437,7 @@ namespace SequencedDropGameMode
                     rotated = random.Next(2) == 1;
                 }
                 //ServerSend.SendChatMessage(1, $"Current Sequence: {currentSequence.name}");
-                //ServerSend.SendChatMessage(1, $"Current Diificulty: {currentSequence.difficulty}");
+                //ServerSend.SendChatMessage(1, $"Current Difficulty: {currentSequence.difficulty}");
                 //ServerSend.SendChatMessage(1, $"Made by: {currentSequence.madeBy}");
 
                 for (int i = 0; i < 6; i++)
@@ -446,7 +446,7 @@ namespace SequencedDropGameMode
                 }
 
                 Utility.SendMessage(currentSequence.name, Utility.MessageType.Styled, "Current Sequence");
-                Utility.SendMessage($"[{currentSequence.difficulty}]", Utility.MessageType.Styled, "Current Diificulty");
+                Utility.SendMessage($"[{currentSequence.difficulty}]", Utility.MessageType.Styled, "Current Difficulty");
                 Utility.SendMessage(currentSequence.madeBy, Utility.MessageType.Styled, "Made by");
 
                 foreach (Instruction instruction in currentSequence.instructions)
