@@ -36,8 +36,12 @@ can now add "Difficulty" and "Madeby" on sequenced map
 ex:
 
 Name=Advanced Quad Spiral
+
 MinPlayers=1
+
 MaxPlayers=-1
+
 Difficulty=Insane
+
 Madeby=Slash and Dash
 
