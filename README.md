@@ -26,3 +26,18 @@ All you have to do is make your own text file and follow the same formatting tha
 It's mostly self explanatory, but can take some practice/messing around to get used to.
 When making a more complicated or large sequence, I recommend trying to make it play in steps, and plan ahead for how it'll go.
 For my sequences, I built them out in Minecraft at their different steps to help me during their creation.
+
+
+## Fork Version
+
+
+can now add "Difficulty" and "Madeby" on sequenced map
+
+ex:
+
+Name=Advanced Quad Spiral
+MinPlayers=1
+MaxPlayers=-1
+Difficulty=Insane
+Madeby=Slash and Dash
+
