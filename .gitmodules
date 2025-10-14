@@ -1,0 +1,3 @@
+[submodule "SequencedDropSequences"]
+	path = SequencedDropSequences
+	url = git@github.com:SlashandDash/SequencedDropSequences.git
