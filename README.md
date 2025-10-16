@@ -45,3 +45,7 @@ Difficulty=Insane
 
 Madeby=Slash and Dash
 
+---------------------------------
+
+Knockback will be disable when shooting someone with a revolver
+
