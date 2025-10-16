@@ -6,6 +6,12 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+using BepInEx.Configuration;
+using HarmonyLib;
+using System;
+using TMPro;
+
+
 namespace SequencedDropGameMode
 {
     public sealed class CustomGameModeSequencedDrop : CustomGameModes.CustomGameMode
@@ -513,7 +519,17 @@ namespace SequencedDropGameMode
             return false;
         }
 
-        // Override, make the game mode timer get set to 10 rather than 1 when ending early
+        [HarmonyPatch(typeof(ServerSend), nameof(ServerSend.PlayerDamage))]
+        [HarmonyPrefix]
+        public static bool PrePlayerDamage(ulong param_0, ulong param_1, int param_2, Vector3 param_3, int param_4)
+        {
+            if (param_3.magnitude > 1f)
+            {
+                return false;
+            }
+            return true;
+        }
+
         [HarmonyPatch(typeof(GameModeBlockDrop), nameof(GameModeBlockDrop.Method_Private_Void_4))]
         [HarmonyPrefix]
         internal static bool PreTryEndEarly()
