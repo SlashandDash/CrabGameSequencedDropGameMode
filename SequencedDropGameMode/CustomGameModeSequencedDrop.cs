@@ -6,12 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-using BepInEx.Configuration;
-using HarmonyLib;
-using System;
-using TMPro;
-
-
 namespace SequencedDropGameMode
 {
     public sealed class CustomGameModeSequencedDrop : CustomGameModes.CustomGameMode
