@@ -47,5 +47,5 @@ Madeby=Slash and Dash
 
 ---------------------------------
 
-Knockback will be disable when shooting someone with a revolver
+No Knockback when shooting someone with a revolver
 
