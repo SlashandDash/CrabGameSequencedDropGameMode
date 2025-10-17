@@ -513,17 +513,27 @@ namespace SequencedDropGameMode
             return false;
         }
 
-        [HarmonyPatch(typeof(ServerSend), nameof(ServerSend.PlayerDamage))]
+        [HarmonyPatch(typeof(ServerSend), nameof(ServerSend.PlayerDamage))] // Ensures knockback does not exceed 100 units in any direction to prevent NaN crashes
         [HarmonyPrefix]
         public static bool PrePlayerDamage(ulong param_0, ulong param_1, int param_2, Vector3 param_3, int param_4)
         {
+            //param_3 = knockback direction and force
+            //make sure param_3 does not exeed 100 units in any direction
+
+
+            //ServerSend.SendChatMessage(1, param_3.magnitude.ToString());
+
             if (param_3.magnitude > 1f)
             {
-                return false;
+                return false; // Ignore the knockback if it exceeds 100 units in any direction
             }
             return true;
         }
 
+
+
+
+        // Override, make the game mode timer get set to 10 rather than 1 when ending early
         [HarmonyPatch(typeof(GameModeBlockDrop), nameof(GameModeBlockDrop.Method_Private_Void_4))]
         [HarmonyPrefix]
         internal static bool PreTryEndEarly()
