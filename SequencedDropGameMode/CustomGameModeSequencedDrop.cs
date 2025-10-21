@@ -523,7 +523,7 @@ namespace SequencedDropGameMode
 
             //ServerSend.SendChatMessage(1, param_3.magnitude.ToString());
 
-            if (param_3.magnitude > 1f)
+            if (param_3.magnitude > 1f && LobbyManager.Instance.gameMode.modeName.ToString() == "Sequenced Drop")
             {
                 return false; // Ignore the knockback if it exceeds 100 units in any direction
             }
